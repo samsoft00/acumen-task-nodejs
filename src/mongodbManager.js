@@ -16,7 +16,6 @@ export default class MongodbManager {
   async connectDb() {
     this._client = new MongoClient(MONGODB_URI, { useUnifiedTopology: true });
     await this._client.connect();
-    log("Database connected!");
   }
 
   getDbClient() {
@@ -27,6 +26,12 @@ export default class MongodbManager {
   async close() {
     if (this._client) {
       await this._client.close();
+    }
+  }
+
+  async dropDatabase() {
+    if (this._client) {
+      await this._client.db(MONGODB_NAME).dropDatabase();
     }
   }
 }

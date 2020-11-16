@@ -1,5 +1,6 @@
 import parse from "csv-parse";
-import { join } from "path";
+import log from "fancy-log";
+import { join, resolve } from "path";
 import { createReadStream } from "fs";
 
 import MongoDbManager from "../mongodbManager";
@@ -7,6 +8,37 @@ import MongoDbManager from "../mongodbManager";
 const srcPath = (...segments) => join(__dirname, "../../olists", ...segments);
 
 function OlistRepo() {
+  //seed data
+  async function dataLoader() {
+    const dbManager = MongoDbManager.getInstance();
+
+    try {
+      const db = dbManager.getDbClient();
+
+      const results = await db.collection("order_items").findOne();
+
+      if (!results) {
+        const orderItems = "olist_order_items_dataset.csv";
+        const productItems = "olist_products_dataset.csv";
+        const sellerItems = "olist_sellers_dataset.csv";
+
+        const orders = await loadData(orderItems);
+        const products = await loadData(productItems);
+        const sellers = await loadData(sellerItems);
+
+        await db.collection("order_items").insertMany(orders);
+        await db.collection("products").insertMany(products);
+        await db.collection("sellers").insertMany(sellers);
+
+        log("Data seeded!");
+      }
+      //
+    } catch (error) {
+      await dbManager.dropDatabase();
+      await dbManager.close();
+    }
+  }
+
   // load data from csv file
   function loadData(filePath) {
     return new Promise((resolve, reject) => {
@@ -89,7 +121,7 @@ function OlistRepo() {
     });
   }
 
-  return { loadData, getOrders, orderById };
+  return { dataLoader, loadData, getOrders, orderById };
 }
 
 export default OlistRepo();
