@@ -1,6 +1,6 @@
 # Enagage Task (Node.js)
 
-![Test](https://github.com/samsoft00/engage-task-nodejs/blob/master/olists/Screenshot 2020-11-16 at 17.00.07.png)
+![Test](https://github.com/samsoft00/engage-task-nodejs/blob/master/olists/Screenshot2020-11-16.png)
 
 ### Resources
 
