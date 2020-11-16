@@ -10,7 +10,7 @@ const port =
   parseInt(process.env.NODE_ENV === "test" ? 8378 : process.env.PORT, 10) ||
   8000;
 
-Engage.listen(port, async () => {
+export const server = Engage.listen(port, async () => {
   await dbManager.connectDb();
   log(`Server is running on http://localhost:${port} `);
 });
