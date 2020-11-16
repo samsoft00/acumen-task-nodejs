@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start:dev": "NODE_ENV=development NODE_CONFIG_DIR=./src/configs nodemon",
-    "test": "jest --no-cache  --detectOpenHandles --runInBand --forceExit",
+    "test": "jest --no-cache --detectOpenHandles --runInBand --forceExit",
     "pretest": "NODE_ENV=test babel-node ./src/test/migrate.js"
   },
   "keywords": [],
