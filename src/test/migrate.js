@@ -1,16 +1,16 @@
-import MongoDbManager from "../mongodbManager";
-import OlistRepo from "../repos/olist.repo";
+import MongoDbManager from '../mongodbManager'
+import OlistRepo from '../repos/olist.repo';
 
 /**
  * Migration file to setup database
  */
 
 (async () => {
-  const dbManager = MongoDbManager.getInstance();
+  const dbManager = MongoDbManager.getInstance()
 
-  await dbManager.connectDb();
+  await dbManager.connectDb()
 
-  await OlistRepo.dataLoader();
+  await OlistRepo.dataLoader()
 
-  await dbManager.close();
-})();
+  await dbManager.close()
+})()

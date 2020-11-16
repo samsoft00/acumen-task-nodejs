@@ -1,10 +1,10 @@
-import { Router } from "express";
+import { Router } from 'express'
 
-import { authMiddleware } from "../middlewares/auth.middleware";
-import UserController from "../controller/user.controller";
+import { authMiddleware } from '../middlewares/auth.middleware'
+import UserController from '../controller/user.controller'
 
-const routes = Router();
+const routes = Router()
 
-routes.put("/account", authMiddleware, UserController.updateAccount);
+routes.put('/account', authMiddleware, UserController.updateAccount)
 
-export default routes;
+export default routes
