@@ -11,7 +11,6 @@ function OlistRepo() {
   function loadData(filePath) {
     return new Promise((resolve, reject) => {
       const inputFile = createReadStream(srcPath(filePath));
-      console.log(inputFile);
 
       const parser = parse({
         skip_lines_with_error: true,
@@ -81,7 +80,7 @@ function OlistRepo() {
 
         const removeItem = await dbClient
           .collection("order_items")
-          .remove({ order_id: { $eq: order_id } }, { justOne: true });
+          .deleteOne({ order_id: { $eq: order_id } }, { justOne: true });
 
         resolve(removeItem);
       } catch (error) {
