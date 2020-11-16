@@ -1,23 +1,24 @@
-import '@babel/polyfill'
-import express from 'express'
-import cors from 'cors'
-import bodyParser from 'body-parser'
+import "@babel/polyfill";
+require("dotenv").config();
+import express from "express";
+import cors from "cors";
+import bodyParser from "body-parser";
 
-import appRoutes from './routes'
+import appRoutes from "./routes";
 
-const engage = express()
+const engage = express();
 
 const corsOptions = {
   credentials: true,
   origin: true,
-  optionsSuccessStatus: 200
-}
+  optionsSuccessStatus: 200,
+};
 
-engage.use(cors(corsOptions))
-engage.use(bodyParser.urlencoded({ limit: '50mb', extended: true }))
-engage.use(bodyParser.json())
+engage.use(cors(corsOptions));
+engage.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
+engage.use(bodyParser.json());
 
 // routes
-engage.use(appRoutes)
+engage.use(appRoutes);
 
-export default engage
+export default engage;
