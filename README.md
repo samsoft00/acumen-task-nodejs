@@ -8,7 +8,15 @@
 
 [Postman Url](https://www.getpostman.com/collections/031387a0dc63b44ed2b3)
 
-### ENV variables
+### Usage
+
+- `git clone https://github.com/samsoft00/engage-task-nodejs.git engage-oye-task`
+- `cd engage-oye-task`
+- `npm i`
+- `cp .env.example .env`
+- `npm run start:dev`
+
+**ENV variables**
 
 ```
 PORT=8000
