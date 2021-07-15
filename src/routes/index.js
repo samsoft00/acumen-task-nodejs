@@ -1,11 +1,11 @@
 import { Router } from 'express'
 
-import OlistRoute from './olists.routes'
+import CourseRoute from './course.routes'
 import UserRoute from './user.routes'
 
 const routes = Router()
 
-routes.use('/', OlistRoute)
-routes.use('/', UserRoute)
+routes.use('/', CourseRoute)
+routes.use('/account', UserRoute)
 
 export default routes

@@ -6,7 +6,7 @@ import bodyParser from 'body-parser'
 import appRoutes from './routes'
 require('dotenv').config()
 
-const engage = express()
+const acumen = express()
 
 const corsOptions = {
   credentials: true,
@@ -14,11 +14,11 @@ const corsOptions = {
   optionsSuccessStatus: 200
 }
 
-engage.use(cors(corsOptions))
-engage.use(bodyParser.urlencoded({ limit: '50mb', extended: true }))
-engage.use(bodyParser.json())
+acumen.use(cors(corsOptions))
+acumen.use(bodyParser.urlencoded({ limit: '50mb', extended: true }))
+acumen.use(bodyParser.json())
 
 // routes
-engage.use(appRoutes)
+acumen.use(appRoutes)
 
-export default engage
+export default acumen
