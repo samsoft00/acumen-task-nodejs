@@ -36,8 +36,7 @@ export default class UserController {
           .regex(/^[a-zA-Z0-9!@#$%&*]{3,25}$/)
           .required()
           .error(new ValidationError('Invalid password, special character is not allow!')),
-        dob: Joi.date()
-          .format('YYYY-MM-DD')
+        dob: Joi.string()
           .required()
           .error(new ValidationError('Date of birth must be in YYYY-MM-DD format')),
         gender: Joi.string()
@@ -52,14 +51,15 @@ export default class UserController {
       const firestore = FirestoreManager.getInstance()
       const db = firestore.getDbClient()
 
+      console.log(db)
+
       const res = await db.collection('user').doc(crypto.randomBytes(16)).set({
         ...payload,
         verified: false
       })
+
       // generate verification token
-      const token = jwt.sign({
-        email: payload.email
-      }, process.env.AES_KEY)
+      const token = jwt.sign({ email: payload.email }, process.env.AES_KEY)
 
       return res.status(200).json({
         status: 'SUCCESS',

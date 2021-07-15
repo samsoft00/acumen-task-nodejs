@@ -15,7 +15,7 @@ export default class FirestoreManager {
     return FirestoreManager.instance
   }
 
-  async connectDb () {
+  connectDb () {
     this._client = fs.firestore()
   }
 

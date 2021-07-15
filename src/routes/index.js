@@ -5,7 +5,7 @@ import UserRoute from './user.routes'
 
 const routes = Router()
 
-routes.use('/', CourseRoute)
+routes.use('/course', CourseRoute)
 routes.use('/account', UserRoute)
 
 export default routes

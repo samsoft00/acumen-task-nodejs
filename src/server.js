@@ -12,7 +12,7 @@ const port =
   8000
 
 Acumen.listen(port, async () => {
-  await dbManager.connectDb()
+  dbManager.connectDb()
 
   log(`Server is running on http://localhost:${port} `)
 })
