@@ -4,7 +4,7 @@ import CourseController from '../controller/course.controller'
 
 const routes = Router()
 
-routes.post('/courses', CourseController.createCourse)
+routes.post('/courses', CourseController.createEnrollment)
 
 routes.get('/courses', CourseController.getCourses)
 

@@ -46,3 +46,4 @@ node_modules
 dist/
 .vscode
 invoices
+key.json
